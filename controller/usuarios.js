@@ -14,7 +14,7 @@ const usuariosPut =  (req, res = response) =>{
     const{id} = req.params; //params puede traer muchos datos
     res.json({
         msg: 'put API - controller',
-        id
+        id 
     });
 }
 
