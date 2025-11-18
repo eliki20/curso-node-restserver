@@ -33,7 +33,8 @@ const UsuarioSchema = Schema({
 
 //esta funcion quita los campos__v y password y el resto los almacena en variable usuario
 UsuarioSchema.methods.toJSON = function(){
-    const {_v, password, ...usuario} = this.toObject();
+    const {_v, password, _id, ...usuario} = this.toObject();
+    usuario.uid = _id;
     return usuario;
 }
 module.exports = model('Usuario', UsuarioSchema);

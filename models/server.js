@@ -5,8 +5,10 @@ const { dbConnection } = require('../database/config');
 class Server {
     constructor() {
         this.app = express();
+        //define el puesto
         this.port = process.env.PORT || 3000;
         this.usuariosPath = '/api/usuarios';
+        this.authPath = '/api/auth'
         //llama a conectar DB
         this.conectarDB();
         //Middelware
@@ -30,7 +32,8 @@ class Server {
     }
     //Se encuentran las rutas
     routes() {
-        this.app.use(this.usuariosPath, require('../routes/usuarios'))
+        this.app.use(this.usuariosPath, require('../routes/usuarios'));
+        this.app.use(this.authPath, require('../routes/auth'));
     }
     //Escuchar el puerto de salida
     listen() {
